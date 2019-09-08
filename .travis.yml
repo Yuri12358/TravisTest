@@ -1,2 +1,25 @@
 language: cpp
-script: g++ main.cpp
+os: linux
+dist: bionic
+matrix:
+    include:
+        - addons:
+            apt:
+                sources:
+                    - ubuntu-toolchain-r-test
+                    - llvm-toolchain-precise-7.0
+                packages:
+                    - clang-7.0
+          env: 
+              - MATRIX_EVAL="CC=clang-7.0 && CXX=clang++-7.0"
+        - addons:
+            apt:
+                sources:
+                    - ubuntu-toolchain-r-test
+                packages:
+                    - g++-7
+          env:
+              - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+before_install:
+    - eval "${MATRIX_EVAL}"
+script: $CXX -std=c++17 main.cpp
