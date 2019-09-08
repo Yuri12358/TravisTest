@@ -1,13 +1,13 @@
 language: cpp
 os: linux
-dist: bionic
+dist: trusty
 matrix:
     include:
         - addons:
             apt:
                 sources:
                     - ubuntu-toolchain-r-test
-                    - llvm-toolchain-bionic-7
+                    - llvm-toolchain-trusty-7
                 packages:
                     - clang-7.0
           env: 
