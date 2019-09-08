@@ -3,14 +3,14 @@ os: linux
 dist: bionic
 matrix:
     include:
-        #- addons:
-            #apt:
-                #sources:
-                #- ubuntu-toolchain-r-test
-                #- llvm-toolchain-trusty-7
-                #packages:
-                #- clang-7.0
-        - env: 
+        - addons:
+            apt:
+                sources:
+                    - ubuntu-toolchain-r-test
+                    - llvm-toolchain-bionic-7
+                packages:
+                    - clang-7.0
+          env: 
               - MATRIX_EVAL="CC=clang-7.0 && CXX=clang++-7.0"
         - addons:
             apt:
